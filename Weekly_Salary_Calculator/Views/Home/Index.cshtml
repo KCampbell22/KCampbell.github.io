@@ -1,0 +1,41 @@
+﻿@model StudentWorkerModel
+@using System.Globalization
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Calculate weekly salary</title>
+</head>
+<body>
+    <header></header>
+    <form asp-action="Index" method="post">
+        <div asp-validation-summary="All"></div>
+        <div>
+            <label asp-for="Name">Name</label>
+            <input asp-for="Name" />
+        </div>
+        <div>
+            <label asp-for="StudentId">Student ID</label>
+            <input asp-for="StudentId" />
+        </div>
+        <div>
+            <label asp-for="HrsWorked">Amount of hours worked</label>
+            <input asp-for="HrsWorked">
+        </div>
+        <div>
+            <label asp-for="HourlyPay">Hourly pay</label>
+            <input asp-for="HourlyPay" />
+        </div>
+        <div>
+            <label> Weekly salary</label>
+            <input value="@ViewBag.WeeklyPay.ToString("C", CultureInfo.GetCultureInfo("en-US"))" readonly />
+        </div>
+        <button type="submit">Calculate</button>
+        <a asp-action="Index">Clear</a>
+    </form>
+
+</body>
+</html>
+
